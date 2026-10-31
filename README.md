@@ -1,11 +1,11 @@
 
-# **i-Status**
+# **i-status-ui**
 
-i-Status is an open-source JavaScript UI library with reusable components for status, progress, tracking, and notifications. It helps make process states easy to understand at a glance and simplifies development.
+i-status-ui is an open-source JavaScript UI library with reusable components for status, progress, tracking, and notifications. It helps make process states easy to understand at a glance and simplifies development.
 
 ## **Usage**
 
-You can use i-Status in two ways.
+You can use i-status-ui in two ways.
 
 ### **Option 1: Using npm (ESM)**
 
@@ -67,4 +67,4 @@ Then use the library through the global `iStatus` object:
 
 ## **License**
 
-i-Status is an open-source library released under the Apache License 2.0.
+i-Status-ui is an open-source library released under the Apache License 2.0.
