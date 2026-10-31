@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i-Status UI — Design System Playground</title>
+
+    <!-- Official styles from CDN (v0.1.2) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/i-status-ui@0.1.2/styles/i-Status.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/i-status-ui@0.1.2/styles/tokens.css">
+
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-nav: rgba(255, 255, 255, 0.92);
+            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #6558a6;
+            --primary-hover: #55498f;
+            --primary-light: #f0eef9;
+            --pill-bg: #f1f5f9;
+            --pill-active-bg: #0f172a;
+            --pill-active-text: #ffffff;
+            --radius-lg: 12px;
+            --radius-md: 8px;
+            --radius-pill: 9999px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: var(--bg-body);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 13px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Sticky Top Navbar --- */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-nav);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 32px;
+        }
+
+        .nav-inner {
+            max-width: 1336px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .nav-brand-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-brand-title {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-weight: 750;
+            font-size: 16px;
+            color: #0f172a;
+            letter-spacing: -0.03em;
+        }
+
+        /* --- Botones Negros con Opacidad en Hover --- */
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .hero-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            padding: 0 16px;
+            border: 1px solid #0f172a;
+            border-radius: 8px;
+            background: #0f172a;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 1;
+            transition: opacity 180ms ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .hero-link:hover {
+            opacity: 0.75;
+        }
+
+        /* --- Hero con Fondo Blanco y Movimiento Sutil Dinámico --- */
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 44px 32px 38px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            pointer-events: none;
+            width: 600px;
+            height: 260px;
+            right: -100px;
+            top: -90px;
+            background: radial-gradient(circle, rgba(101, 88, 166, 0.05) 0%, rgba(241, 239, 248, 0.2) 60%, transparent 100%);
+            border: 1px solid rgba(101, 88, 166, 0.06);
+            border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%;
+            transform: rotate(-10deg);
+            animation: heroDrift 16s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            width: 500px;
+            height: 200px;
+            right: 150px;
+            top: -60px;
+            background: radial-gradient(circle, rgba(101, 88, 166, 0.03) 0%, transparent 70%);
+            border-color: rgba(101, 88, 166, 0.04);
+            animation-duration: 22s;
+            animation-direction: alternate-reverse;
+        }
+
+        @keyframes heroDrift {
+            from { transform: translate3d(0, 0, 0) rotate(-10deg) scale(1); }
+            to { transform: translate3d(-20px, 12px, 0) rotate(-5deg) scale(1.04); }
+        }
+
+        .hero-inner {
+            width: 100%;
+            max-width: 1336px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 36px;
+        }
+
+        .hero-copy { min-width: 0; max-width: 760px; }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin: 0 0 10px;
+            color: #6558a6;
+            font-size: 11px;
+            line-height: 1.3;
+            font-weight: 750;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .hero-eyebrow::before {
+            content: "";
+            width: 18px;
+            height: 2px;
+            background: #6558a6;
+            border-radius: 2px;
+        }
+
+        .hero-title-row {
+            display: flex;
+            align-items: center;
+            min-height: 52px;
+        }
+
+        .hero-title {
+            margin: 0;
+            color: #0f172a;
+            font-size: clamp(32px, 4.2vw, 44px);
+            line-height: 1.1;
+            letter-spacing: -.05em;
+            font-weight: 760;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            white-space: nowrap;
+        }
+
+        .type-cursor {
+            display: inline-block;
+            width: 2px;
+            height: .88em;
+            margin-left: 3px;
+            vertical-align: -.03em;
+            background: #6558a6;
+            animation: cursorBlink 850ms steps(2, start) infinite;
+        }
+
+        @keyframes cursorBlink { to { visibility: hidden; } }
+
+        /* --- Círculos de Estado --- */
+        .traffic-dots {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: .12em;
+            gap: 8px;
+            margin-left: 12px;
+        }
+
+        .traffic-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(.35);
+            animation: dotTypeIn 280ms cubic-bezier(.2,.8,.2,1) forwards;
+        }
+        .traffic-dot.green {
+            background: #20c66b;
+            box-shadow: 0 0 0 3px rgba(32,198,107,.12), 0 0 10px rgba(32,198,107,.28);
+        }
+        .traffic-dot.yellow {
+            background: #ffbf24;
+            box-shadow: 0 0 0 3px rgba(255,191,36,.14), 0 0 10px rgba(255,191,36,.30);
+        }
+        .traffic-dot.red {
+            background: #ff525e;
+            box-shadow: 0 0 0 3px rgba(255,82,94,.12), 0 0 10px rgba(255,82,94,.28);
+        }
+        @keyframes dotTypeIn { to { opacity: 1; transform: scale(1); } }
+
+        .hero-tagline {
+            max-width: 700px;
+            margin: 10px 0 0;
+            color: #475569;
+            font-size: 13.5px;
+            line-height: 1.65;
+            letter-spacing: .002em;
+        }
+        .hero-tagline strong {
+            color: #6558a6;
+            font-weight: 750;
+            margin-right: 4px;
+        }
+
+        /* --- Stacked Workspace --- */
+        .workspace {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 32px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .card-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fafafa;
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* --- Controls Grid Layout --- */
+        .controls-grid {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .controls-grid, .dynamic-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .sticky-nav { padding: 12px 16px; }
+            .hero { padding: 32px 16px 24px; }
+            .hero-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .controls-grid, .dynamic-options { grid-template-columns: 1fr; }
+            .workspace { padding: 16px; gap: 16px; }
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 12px;
+        }
+
+        .control-group select,
+        .control-group input {
+            width: 100%;
+            height: 38px;
+            padding: 0 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-surface);
+            color: var(--text-main);
+            font-size: 13px;
+            outline: none;
+        }
+        .control-group select:focus,
+        .control-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        /* Pill Buttons / Segmented Controls */
+        .pill-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pill-btn {
+            background: var(--pill-bg);
+            border: 1px solid transparent;
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 150ms ease;
+        }
+
+        .pill-btn:hover { background: #e2e8f0; }
+
+        .pill-btn.active {
+            background: var(--pill-active-bg);
+            color: var(--pill-active-text);
+            font-weight: 600;
+        }
+
+        /* Dynamic sub-sections */
+        .dynamic-options {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding-top: 4px;
+            border-top: 1px dashed var(--border-color);
+            margin-top: 4px;
+        }
+
+        .span-full { grid-column: 1 / -1; }
+
+        /* --- Live Preview Box --- */
+        .preview-box {
+            padding: 48px 32px;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            overflow: auto;
+            width: 100%;
+        }
+
+        .preview {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- Code Tabs Header --- */
+        .code-tabs-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .code-tabs { display: flex; gap: 4px; }
+
+        .code-tab {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            padding: 12px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 150ms;
+        }
+
+        .code-tab:hover { color: #f8fafc; }
+
+        .code-tab.active {
+            color: #f8fafc;
+            border-bottom-color: var(--primary);
+        }
+
+        .btn-copy {
+            background: rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        .btn-copy:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .code-container {
+            background: #0b0f19;
+            padding: 20px;
+            overflow: auto;
+            max-height: 350px;
+        }
+
+        .code-container pre {
+            margin: 0;
+            color: #38bdf8;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .playground-error {
+            padding: 12px 16px;
+            border: 1px solid #fecaca;
+            border-radius: var(--radius-md);
+            background: #fef2f2;
+            color: #991b1b;
+            font-family: monospace;
+            font-size: 11px;
+            margin: 16px;
+        }
+
+        [hidden] { display: none !important; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky-nav">
+        <div class="nav-inner">
+            <div class="nav-brand-group">
+                <span class="nav-brand-title">i-status-ui</span>
+            </div>
+            <div class="hero-actions" aria-label="Project links">
+                <a class="hero-link" href="https://www.npmjs.com/package/i-status-ui?activeTab=readme" target="_blank" rel="noopener noreferrer">View on npm ↗</a>
+                <a class="hero-link" href="https://github.com/Margie-Verduzco/i-status-ui" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header con Fondo Blanco y Movimiento Sutil Dinámico -->
+    <header class="hero">
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <p class="hero-eyebrow">A JavaScript UI Component Library</p>
+                <div class="hero-title-row">
+                    <h1 class="hero-title">
+                        <span id="typedBrand"></span><span class="type-cursor" aria-hidden="true"></span><span class="traffic-dots" id="typedDots" aria-hidden="true"></span>
+                    </h1>
+                </div>
+                <p class="hero-tagline">
+                    <strong>i-status-ui </strong>
+                    <span>is a lightweight, themeable JavaScript UI library designed to make process states easier to understand at a glance — from a simple status badge to complete multi-step workflows.</span>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stacked Workspace -->
+    <div class="workspace">
+
+        <!-- 1. TOP BLOCK: Configuration Options -->
+        <section class="card">
+            <div class="card-header">
+                <h3>Component Configuration</h3>
+            </div>
+            <div class="controls-grid">
+                <!-- Component Selection -->
+                <div class="control-group">
+                    <label for="componentSelect">Component</label>
+                    <select id="componentSelect">
+                        <option value="notification">Notification</option>
+                        <option value="stepper">Stepper</option>
+                        <option value="progressStepper">Progress Stepper</option>
+                        <option value="badge">Badge</option>
+                        <option value="progressCard">Progress Card</option>
+                        <option value="radialCard">Radial Progress Card</option>
+                    </select>
+                </div>
+
+                <!-- Size -->
+                <div class="control-group">
+                    <label>Size</label>
+                    <div class="pill-group" id="sizePills">
+                        <button type="button" class="pill-btn active" data-value="md">Medium</button>
+                        <button type="button" class="pill-btn" data-value="sm">Small</button>
+                        <button type="button" class="pill-btn" data-value="lg">Large</button>
+                        <button type="button" class="pill-btn" data-value="fluid">Fluid</button>
+                    </div>
+                </div>
+
+                <!-- Visual Theme -->
+                <div class="control-group">
+                    <label for="themeSelect">Visual Theme</label>
+                    <select id="themeSelect"></select>
+                </div>
+
+                <!-- Specific Controls: Notification -->
+                <div id="notificationControls" class="dynamic-options">
+                    <div class="control-group">
+                        <label>Status</label>
+                        <div class="pill-group" id="statusPills">
+                            <button type="button" class="pill-btn active" data-value="success">Success</button>
+                            <button type="button" class="pill-btn" data-value="warning">Warning</button>
+                            <button type="button" class="pill-btn" data-value="error">Error</button>
+                            <button type="button" class="pill-btn" data-value="info">Info</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="titleInput">Title</label>
+                        <input id="titleInput" type="text" value="Notification title.">
+                    </div>
+                    <div class="control-group">
+                        <label for="messageInput">Message</label>
+                        <input id="messageInput" type="text" value="Notification message goes here.">
+                    </div>
+                </div>
+
+                <!-- Controls: Stepper -->
+                <div id="stepperControls" class="dynamic-options" hidden>
+                    <div class="control-group">
+                        <label for="stepperOrientation">Orientation</label>
+                        <select id="stepperOrientation">
+                            <option value="horizontal">Horizontal</option>
+                            <option value="vertical">Vertical</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="stepperCurrent">Current Step</label>
+                        <select id="stepperCurrent"></select>
+                    </div>
+                    <div class="control-group span-full">
+                        <label for="stepperSteps">Steps (comma separated)</label>
+                        <input id="stepperSteps" type="text" value="Step 1, Step 2, Step 3, Step 4">
+                    </div>
+                </div>
+
+                <!-- Controls: Progress Stepper -->
+                <div id="progressStepperControls" class="dynamic-options" hidden>
+                    <div class="control-group">
+                        <label for="progressStepperCurrent">Current Step</label>
+                        <select id="progressStepperCurrent"></select>
+                    </div>
+                    <div class="control-group span-full">
+                        <label for="progressStepperSteps">Steps (comma separated)</label>
+                        <input id="progressStepperSteps" type="text" value="Step 1, Step 2, Step 3">
+                    </div>
+                </div>
+
+                <!-- Controls: Badge -->
+                <div id="badgeControls" class="dynamic-options" hidden>
+                    <div class="control-group">
+                        <label>Status</label>
+                        <div class="pill-group" id="badgeStatusPills">
+                            <button type="button" class="pill-btn active" data-value="success">Success</button>
+                            <button type="button" class="pill-btn" data-value="warning">Warning</button>
+                            <button type="button" class="pill-btn" data-value="error">Error</button>
+                            <button type="button" class="pill-btn" data-value="info">Info</button>
+                        </div>
+                    </div>
+                    <div class="control-group span-full">
+                        <label for="badgeTextInput">Text</label>
+                        <input id="badgeTextInput" type="text" value="Badge label">
+                    </div>
+                </div>
+
+                <!-- Controls: Progress Card -->
+                <div id="progressCardControls" class="dynamic-options" hidden>
+                    <div class="control-group">
+                        <label>Status</label>
+                        <div class="pill-group" id="progressCardStatusPills">
+                            <button type="button" class="pill-btn active" data-value="success">Success</button>
+                            <button type="button" class="pill-btn" data-value="warning">Warning</button>
+                            <button type="button" class="pill-btn" data-value="error">Error</button>
+                            <button type="button" class="pill-btn" data-value="info">Info</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="progressCardTotalInput">Total Steps</label>
+                        <input id="progressCardTotalInput" type="text" value="4">
+                    </div>
+                    <div class="control-group">
+                        <label for="progressCardCompletedInput">Completed</label>
+                        <input id="progressCardCompletedInput" type="text" value="3">
+                    </div>
+                    <div class="control-group span-full">
+                        <label for="progressCardLabelInput">Label</label>
+                        <input id="progressCardLabelInput" type="text" value="Metric label">
+                    </div>
+                </div>
+
+                <!-- Controls: Radial Card -->
+                <div id="radialCardControls" class="dynamic-options" hidden>
+                    <div class="control-group">
+                        <label>Status</label>
+                        <div class="pill-group" id="radialCardStatusPills">
+                            <button type="button" class="pill-btn active" data-value="success">Success</button>
+                            <button type="button" class="pill-btn" data-value="warning">Warning</button>
+                            <button type="button" class="pill-btn" data-value="error">Error</button>
+                            <button type="button" class="pill-btn" data-value="info">Info</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="radialCardTotalInput">Total Segments</label>
+                        <input id="radialCardTotalInput" type="text" value="36">
+                    </div>
+                    <div class="control-group">
+                        <label for="radialCardCompletedInput">Completed Segments</label>
+                        <input id="radialCardCompletedInput" type="text" value="14">
+                    </div>
+                    <div class="control-group span-full">
+                        <label for="radialCardLabelInput">Label</label>
+                        <input id="radialCardLabelInput" type="text" value="Metric name">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. MIDDLE BLOCK: Wide Live Preview -->
+        <section class="card">
+            <div class="card-header">
+                <h3>Live Preview</h3>
+                <span style="color: var(--text-muted); font-size: 11px;">Connected to CDN (v0.1.2)</span>
+            </div>
+            <div class="preview-box">
+                <div class="preview" id="preview"></div>
+            </div>
+            <div id="previewError" class="playground-error" hidden></div>
+        </section>
+
+        <!-- 3. BOTTOM BLOCK: Generated Code with Tabs -->
+        <section class="card">
+            <div class="code-tabs-header">
+                <div class="code-tabs">
+                    <button type="button" class="code-tab active" data-tab="esm">ESM / npm</button>
+                    <button type="button" class="code-tab" data-tab="html">HTML / CDN</button>
+                </div>
+                <button type="button" class="btn-copy" id="btnCopyCode">Copy code</button>
+            </div>
+            <div class="code-container">
+                <pre id="generatedCode"></pre>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Templates para fragmentos de código -->
+    <template id="tpl-esm">// 1. Install via npm:
+// npm i i-status-ui
+
+// 2. Import in your JavaScript / TypeScript module:
+import * as iStatus from "i-status-ui";
+import "i-status-ui/styles.css";
+import "i-status-ui/tokens.css";
+
+iStatus.theme("{{theme}}");
+
+const element = {{jsSnippet}}
+document.getElementById("app").appendChild(element);</template>
+
+    <template id="tpl-html">&lt;-- Include styles and script via CDN --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/i-status-ui@0.1.2/styles/i-Status.css"&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/i-status-ui@0.1.2/styles/tokens.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/i-status-ui@0.1.2/dist/i-status.min.js"&gt;&lt;/script&gt;
+
+&lt;-- Usage snippet --&gt;
+&lt;script&gt;
+    iStatus.theme("{{theme}}");
+
+    const element = {{jsSnippet}}
+    document.getElementById("app").appendChild(element);
+&lt;/script&gt;</template>
+
+    <!-- Load official library bundle from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/i-status-ui@0.1.2/dist/i-status.min.js"></script>
+
+    <script>
+        // Typing Effect Script con Loop Infinito (Escribe, muestra círculos, borra y repite)
+        (() => {
+            const text = "i-Status";
+            const target = document.getElementById("typedBrand");
+            const dots = document.getElementById("typedDots");
+            
+            function runTypingLoop() {
+                let idx = 0;
+                target.textContent = "";
+                dots.innerHTML = "";
+
+                function typeChar() {
+                    if (idx <= text.length) {
+                        target.textContent = text.slice(0, idx);
+                        idx++;
+                        setTimeout(typeChar, 90);
+                    } else {
+                        // Mostrar los círculos de estado
+                        ["green", "yellow", "red"].forEach((color, i) => {
+                            const span = document.createElement("span");
+                            span.className = `traffic-dot ${color}`;
+                            span.style.animationDelay = `${i * 120}ms`;
+                            dots.appendChild(span);
+                        });
+
+                        // Pausa de 3 segundos antes de borrar y reiniciar el loop
+                        setTimeout(eraseText, 3000);
+                    }
+                }
+                typeChar();
+            }
+
+            function eraseText() {
+                let currentText = target.textContent;
+                // Ocultar círculos al empezar a borrar
+                dots.innerHTML = "";
+
+                function deleteChar() {
+                    if (currentText.length > 0) {
+                        currentText = currentText.slice(0, -1);
+                        target.textContent = currentText;
+                        setTimeout(deleteChar, 50);
+                    } else {
+                        // Pausa corta antes de volver a escribir
+                        setTimeout(runTypingLoop, 600);
+                    }
+                }
+                deleteChar();
+            }
+
+            setTimeout(runTypingLoop, 300);
+        })();
+
+        // State & Playground Logic
+        const state = {
+            component: "notification",
+            size: "md",
+            theme: "midnight",
+            status: "success",
+            title: "Notification title.",
+            message: "Notification message goes here.",
+            stepperOrientation: "horizontal",
+            stepperCurrent: 0,
+            stepperSteps: "Step 1, Step 2, Step 3, Step 4",
+            progressStepperCurrent: 0,
+            progressStepperSteps: "Step 1, Step 2, Step 3",
+            badgeText: "Badge label",
+            progressTotal: 4,
+            progressCompleted: 3,
+            progressLabel: "Metric label",
+            radialTotal: 36,
+            radialCompleted: 14,
+            radialLabel: "Metric name",
+            codeTab: "esm"
+        };
+
+        const componentSelect = document.getElementById("componentSelect");
+        const themeSelect = document.getElementById("themeSelect");
+        const preview = document.getElementById("preview");
+        const previewError = document.getElementById("previewError");
+        const generatedCode = document.getElementById("generatedCode");
+        const btnCopyCode = document.getElementById("btnCopyCode");
+
+        const notificationControls = document.getElementById("notificationControls");
+        const stepperControls = document.getElementById("stepperControls");
+        const progressStepperControls = document.getElementById("progressStepperControls");
+        const badgeControls = document.getElementById("badgeControls");
+        const progressCardControls = document.getElementById("progressCardControls");
+        const radialCardControls = document.getElementById("radialCardControls");
+
+        const titleInput = document.getElementById("titleInput");
+        const messageInput = document.getElementById("messageInput");
+        const stepperOrientation = document.getElementById("stepperOrientation");
+        const stepperCurrent = document.getElementById("stepperCurrent");
+        const stepperSteps = document.getElementById("stepperSteps");
+        const progressStepperCurrent = document.getElementById("progressStepperCurrent");
+        const progressStepperSteps = document.getElementById("progressStepperSteps");
+        const badgeTextInput = document.getElementById("badgeTextInput");
+        const progressCardTotalInput = document.getElementById("progressCardTotalInput");
+        const progressCardCompletedInput = document.getElementById("progressCardCompletedInput");
+        const progressCardLabelInput = document.getElementById("progressCardLabelInput");
+        const radialCardTotalInput = document.getElementById("radialCardTotalInput");
+        const radialCardCompletedInput = document.getElementById("radialCardCompletedInput");
+        const radialCardLabelInput = document.getElementById("radialCardLabelInput");
+
+        function loadThemes() {
+            const themes = typeof iStatus.getThemes === "function"
+                ? iStatus.getThemes()
+                : ["default", "midnight", "sunrise", "sunset", "vintage"];
+
+            themeSelect.innerHTML = "";
+            themes.forEach(function(t) {
+                const opt = document.createElement("option");
+                opt.value = t;
+                opt.textContent = t.charAt(0).toUpperCase() + t.slice(1);
+                themeSelect.appendChild(opt);
+            });
+            themeSelect.value = state.theme;
+        }
+
+        function updateVisibility() {
+            const comp = state.component;
+            notificationControls.hidden = comp !== "notification";
+            stepperControls.hidden = comp !== "stepper";
+            progressStepperControls.hidden = comp !== "progressStepper";
+            badgeControls.hidden = comp !== "badge";
+            progressCardControls.hidden = comp !== "progressCard";
+            radialCardControls.hidden = comp !== "radialCard";
+        }
+
+        function getSteps(str) {
+            return str.split(",").map(function(s) { return s.trim(); }).filter(function(s) { return s.length > 0; });
+        }
+
+        function updateStepsOptions(stepsStr, selectEl, currentVal) {
+            const steps = getSteps(stepsStr);
+            selectEl.innerHTML = "";
+            steps.forEach(function(step, idx) {
+                const opt = document.createElement("option");
+                opt.value = idx;
+                opt.textContent = (idx + 1) + " — " + step;
+                selectEl.appendChild(opt);
+            });
+            if (steps.length === 0) {
+                const opt = document.createElement("option");
+                opt.value = "0";
+                opt.textContent = "No steps";
+                selectEl.appendChild(opt);
+                return;
+            }
+            selectEl.value = (currentVal < steps.length) ? currentVal : 0;
+        }
+
+        function renderPreview() {
+            previewError.hidden = true;
+            preview.innerHTML = "";
+
+            try {
+                if (typeof iStatus.theme === "function") {
+                    iStatus.theme(state.theme);
+                }
+
+                let el = null;
+                const comp = state.component;
+
+                if (comp === "notification") {
+                    const fn = iStatus.notification || iStatus.Notification;
+                    el = fn({
+                        status: state.status,
+                        title: state.title,
+                        message: state.message,
+                        colorSource: "theme",
+                        size: state.size
+                    });
+                } else if (comp === "stepper") {
+                    const steps = getSteps(state.stepperSteps);
+                    if (steps.length === 0) throw new Error("At least one step is required.");
+                    const fn = iStatus.stepper || iStatus.Stepper;
+                    el = fn({
+                        current: Number(state.stepperCurrent),
+                        steps: steps,
+                        orientation: state.stepperOrientation,
+                        size: state.size
+                    });
+                } else if (comp === "progressStepper") {
+                    const steps = getSteps(state.progressStepperSteps);
+                    if (steps.length === 0) throw new Error("At least one step is required.");
+                    const fn = iStatus.ProgressStepper || iStatus.progressStepper;
+                    el = fn({
+                        current: Number(state.progressStepperCurrent),
+                        steps: steps,
+                        size: state.size
+                    });
+                } else if (comp === "badge") {
+                    const fn = iStatus.badge || iStatus.Badge;
+                    el = fn({
+                        status: state.status,
+                        text: state.badgeText,
+                        indicator: true,
+                        size: state.size
+                    });
+                } else if (comp === "progressCard") {
+                    const fn = iStatus.progressCard || iStatus.ProgressCard;
+                    el = fn({
+                        status: state.status,
+                        total: Number(state.progressTotal) || 4,
+                        completed: Number(state.progressCompleted) || 0,
+                        label: state.progressLabel,
+                        size: state.size
+                    });
+                } else if (comp === "radialCard") {
+                    const fn = iStatus.radialProgressCard || iStatus.RadialProgressCard || iStatus.radialCard;
+                    el = fn({
+                        status: state.status,
+                        total: Number(state.radialTotal) || 36,
+                        completed: Number(state.radialCompleted) || 14,
+                        label: state.radialLabel,
+                        size: state.size
+                    });
+                }
+
+                if (el instanceof HTMLElement) {
+                    preview.appendChild(el);
+                } else {
+                    throw new Error("The component did not generate a valid HTML element.");
+                }
+            } catch (err) {
+                console.error(err);
+                previewError.hidden = false;
+                previewError.textContent = "Render error: " + err.message;
+            }
+
+            updateCodeOutput();
+        }
+
+        function updateCodeOutput() {
+            const comp = state.component;
+            const size = state.size;
+            const theme = state.theme;
+            let jsSnippet = "";
+
+            if (comp === "notification") {
+                jsSnippet = "iStatus.notification({\n    status: \"" + state.status + "\",\n    title: \"" + state.title + "\",\n    message: \"" + state.message + "\",\n    colorSource: \"theme\",\n    size: \"" + size + "\"\n});";
+            } else if (comp === "stepper") {
+                const stepsArr = getSteps(state.stepperSteps).map(function(s) { return "\"" + s + "\""; }).join(", ");
+                jsSnippet = "iStatus.stepper({\n    current: " + state.stepperCurrent + ",\n    orientation: \"" + state.stepperOrientation + "\",\n    size: \"" + size + "\",\n    steps: [" + stepsArr + "]\n});";
+            } else if (comp === "progressStepper") {
+                const stepsArr = getSteps(state.progressStepperSteps).map(function(s) { return "\"" + s + "\""; }).join(", ");
+                jsSnippet = "iStatus.ProgressStepper({\n    current: " + state.progressStepperCurrent + ",\n    size: \"" + size + "\",\n    steps: [" + stepsArr + "]\n});";
+            } else if (comp === "badge") {
+                jsSnippet = "iStatus.badge({\n    status: \"" + state.status + "\",\n    text: \"" + state.badgeText + "\",\n    indicator: true,\n    size: \"" + size + "\"\n});";
+            } else if (comp === "progressCard") {
+                jsSnippet = "iStatus.progressCard({\n    status: \"" + state.status + "\",\n    total: " + state.progressTotal + ",\n    completed: " + state.progressCompleted + ",\n    label: \"" + state.progressLabel + "\",\n    size: \"" + size + "\"\n});";
+            } else if (comp === "radialCard") {
+                jsSnippet = "iStatus.radialProgressCard({\n    status: \"" + state.status + "\",\n    total: " + state.radialTotal + ",\n    completed: " + state.radialCompleted + ",\n    label: \"" + state.radialLabel + "\",\n    size: \"" + size + "\"\n});";
+            }
+
+            const tplId = state.codeTab === "esm" ? "tpl-esm" : "tpl-html";
+            let templateEl = document.getElementById(tplId);
+            let templateText = templateEl.innerHTML.trim();
+
+            if (state.codeTab === "html") {
+                templateText = templateText
+                    .replace(/&lt;/g, "<")
+                    .replace(/&gt;/g, ">")
+                    .replace(/&amp;/g, "&");
+            }
+
+            let finalCode = templateText
+                .replace("{{theme}}", theme)
+                .replace("{{jsSnippet}}", jsSnippet);
+
+            generatedCode.textContent = finalCode;
+        }
+
+        function setupPills(containerId, callback) {
+            const container = document.getElementById(containerId);
+            container.querySelectorAll(".pill-btn").forEach(function(btn) {
+                btn.addEventListener("click", function() {
+                    container.querySelectorAll(".pill-btn").forEach(function(b) { b.classList.remove("active"); });
+                    btn.classList.add("active");
+                    callback(btn.getAttribute("data-value"));
+                });
+            });
+        }
+
+        setupPills("sizePills", function(val) { state.size = val; renderPreview(); });
+        setupPills("statusPills", function(val) { state.status = val; renderPreview(); });
+        setupPills("badgeStatusPills", function(val) { state.status = val; renderPreview(); });
+        setupPills("progressCardStatusPills", function(val) { state.status = val; renderPreview(); });
+        setupPills("radialCardStatusPills", function(val) { state.status = val; renderPreview(); });
+
+        document.querySelectorAll(".code-tab").forEach(function(tab) {
+            tab.addEventListener("click", function() {
+                document.querySelectorAll(".code-tab").forEach(function(t) { t.classList.remove("active"); });
+                tab.classList.add("active");
+                state.codeTab = tab.getAttribute("data-tab");
+                updateCodeOutput();
+            });
+        });
+
+        btnCopyCode.addEventListener("click", function() {
+            navigator.clipboard.writeText(generatedCode.textContent);
+            btnCopyCode.textContent = "Copied!";
+            setTimeout(function() { btnCopyCode.textContent = "Copy code"; }, 1500);
+        });
+
+        componentSelect.addEventListener("change", function(e) {
+            state.component = e.target.value;
+            updateVisibility();
+            renderPreview();
+        });
+
+        themeSelect.addEventListener("change", function(e) {
+            state.theme = e.target.value;
+            renderPreview();
+        });
+
+        titleInput.addEventListener("input", function(e) { state.title = e.target.value; renderPreview(); });
+        messageInput.addEventListener("input", function(e) { state.message = e.target.value; renderPreview(); });
+        
+        stepperOrientation.addEventListener("change", function(e) { state.stepperOrientation = e.target.value; renderPreview(); });
+        stepperCurrent.addEventListener("change", function(e) { state.stepperCurrent = e.target.value; renderPreview(); });
+        stepperSteps.addEventListener("input", function(e) {
+            state.stepperSteps = e.target.value;
+            updateStepsOptions(state.stepperSteps, stepperCurrent, state.stepperCurrent);
+            renderPreview();
+        });
+
+        progressStepperCurrent.addEventListener("change", function(e) { state.progressStepperCurrent = e.target.value; renderPreview(); });
+        progressStepperSteps.addEventListener("input", function(e) {
+            state.progressStepperSteps = e.target.value;
+            updateStepsOptions(state.progressStepperSteps, progressStepperCurrent, state.progressStepperCurrent);
+            renderPreview();
+        });
+
+        badgeTextInput.addEventListener("input", function(e) { state.badgeText = e.target.value; renderPreview(); });
+        progressCardTotalInput.addEventListener("input", function(e) { state.progressTotal = e.target.value; renderPreview(); });
+        progressCardCompletedInput.addEventListener("input", function(e) { state.progressCompleted = e.target.value; renderPreview(); });
+        progressCardLabelInput.addEventListener("input", function(e) { state.progressLabel = e.target.value; renderPreview(); });
+        radialCardTotalInput.addEventListener("input", function(e) { state.radialTotal = e.target.value; renderPreview(); });
+        radialCardCompletedInput.addEventListener("input", function(e) { state.radialCompleted = e.target.value; renderPreview(); });
+        radialCardLabelInput.addEventListener("input", function(e) { state.radialLabel = e.target.value; renderPreview(); });
+
+        loadThemes();
+        updateStepsOptions(state.stepperSteps, stepperCurrent, 0);
+        updateStepsOptions(state.progressStepperSteps, progressStepperCurrent, 0);
+        updateVisibility();
+        renderPreview();
+    </script>
+</body>
+
+</html>
