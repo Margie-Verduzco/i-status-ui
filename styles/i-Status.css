@@ -1,0 +1,2088 @@
+
+/*
+ 
+ I-STATUS
+ Component Styles
+ 
+ */
+
+
+/* 
+   Base
+    */
+
+.ist-notification,
+.ist-stepper,
+.ist-progress-stepper {
+
+    font-family:
+        var(--ist-font-primary);
+
+    box-sizing:
+        border-box;
+
+}
+
+
+/* 
+   NOTIFICATION
+    */
+
+.ist-notification {
+
+    --ist-notification-icon:
+        var(--ist-color-info);
+
+    --ist-notification-accent:
+        var(--ist-color-info);
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        var(--ist-space-3);
+
+    width:
+        100%;
+
+    padding:
+        var(--ist-space-4);
+
+    box-sizing:
+        border-box;
+
+    color:
+        var(--ist-color-text);
+
+    background:
+        var(--ist-color-background);
+
+    border:
+        var(--ist-border-width)
+        solid
+        var(--ist-notification-accent);
+
+    border-radius:
+        var(--ist-radius-md);
+
+    box-shadow:
+        var(--ist-shadow-sm);
+
+    transition:
+        transform
+        var(--ist-transition-fast),
+
+        background
+        var(--ist-transition-fast),
+
+        border-color
+        var(--ist-transition-fast);
+
+}
+
+
+/* 
+   Notification Icon
+    */
+
+.ist-notification__icon {
+
+    flex:
+        0 0 auto;
+
+    width:
+        28px;
+
+    height:
+        28px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--ist-notification-icon);
+
+    color:
+        var(--ist-color-background);
+
+    font-size:
+        var(--ist-font-size-sm);
+
+    font-weight:
+        var(--ist-font-weight-bold);
+
+    line-height:
+        1;
+
+}
+
+
+/* 
+   Notification Content
+    */
+
+.ist-notification__content {
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        var(--ist-space-1);
+
+}
+
+
+.ist-notification__title {
+
+    color:
+        var(--ist-color-text);
+
+    font-size:
+        var(--ist-font-size-lg);
+
+    font-weight:
+        var(--ist-font-weight-semibold);
+
+    line-height:
+        1.3;
+
+}
+
+
+.ist-notification__message {
+
+    color:
+        var(--ist-color-text-muted);
+
+    font-size:
+        var(--ist-font-size-sm);
+
+    line-height:
+        1.45;
+
+}
+
+
+/* 
+   Notification Status
+    */
+
+.ist-notification--success {
+
+    --ist-notification-icon:
+        var(--ist-color-success);
+
+    --ist-notification-accent:
+        var(--ist-color-success-border);
+
+}
+
+
+.ist-notification--warning {
+
+    --ist-notification-icon:
+        var(--ist-color-warning);
+
+    --ist-notification-accent:
+        var(--ist-color-warning-border);
+
+}
+
+
+.ist-notification--error {
+
+    --ist-notification-icon:
+        var(--ist-color-error);
+
+    --ist-notification-accent:
+        var(--ist-color-error-border);
+
+}
+
+
+.ist-notification--info {
+
+    --ist-notification-icon:
+        var(--ist-color-info);
+
+    --ist-notification-accent:
+        var(--ist-color-info-border);
+
+}
+
+
+/* 
+   Notification Sources
+    */
+
+.ist-notification--source-theme {
+
+    background:
+        var(--ist-color-background);
+
+}
+
+
+.ist-notification--source-default {
+
+    background:
+        var(--ist-color-background);
+
+}
+
+
+.ist-notification--source-custom {
+
+    --ist-notification-icon:
+        var(--ist-custom-icon);
+
+    --ist-notification-accent:
+        var(--ist-custom-accent);
+
+}
+
+
+/* 
+   Notification Hover
+    */
+
+.ist-notification:hover {
+
+    transform:
+        translateY(-1px);
+
+    background:
+        color-mix(
+            in srgb,
+            var(--ist-notification-accent) 4%,
+            var(--ist-color-background)
+        );
+
+}
+
+
+/* 
+   STEPPER
+    */
+
+.ist-stepper {
+
+    --ist-stepper-completed:
+        var(--ist-color-step-completed);
+
+    --ist-stepper-completed-surface:
+        var(--ist-color-step-completed-surface);
+
+    --ist-stepper-completed-hover:
+        var(--ist-color-step-completed-hover);
+
+    --ist-stepper-current:
+        var(--ist-color-step-current);
+
+    --ist-stepper-current-surface:
+        var(--ist-color-step-current-surface);
+
+    --ist-stepper-upcoming:
+        var(--ist-color-step-upcoming);
+
+    --ist-stepper-upcoming-surface:
+        var(--ist-color-step-upcoming-surface, var(--ist-color-background));
+
+    --ist-stepper-upcoming-hover:
+        var(--ist-color-step-upcoming-hover);
+
+    --ist-stepper-line:
+        var(--ist-color-step-connector);
+
+    --ist-stepper-background:
+        var(--ist-color-background);
+
+    display:
+        flex;
+
+    width:
+        100%;
+
+    box-sizing:
+        border-box;
+
+    position:
+        relative;
+
+}
+
+
+/* 
+   STEPPER - Horizontal
+    */
+
+.ist-stepper--horizontal {
+
+    flex-direction:
+        row;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+}
+
+
+.ist-stepper--horizontal
+.ist-stepper__item {
+
+    position:
+        relative;
+
+    flex:
+        1 1 0;
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    cursor:
+        pointer;
+
+}
+
+
+.ist-stepper--horizontal
+.ist-stepper__content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    width:
+        100%;
+
+    background:
+        transparent;
+
+    padding:
+        0 8px;
+
+}
+
+
+/* 
+   STEPPER - Vertical
+    */
+
+.ist-stepper--vertical {
+
+    flex-direction:
+        column;
+
+    align-items:
+        stretch;
+
+}
+
+
+.ist-stepper--vertical
+.ist-stepper__item {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    min-height:
+        80px;
+
+    cursor:
+        pointer;
+
+}
+
+
+.ist-stepper--vertical
+.ist-stepper__content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        12px;
+
+    background:
+        transparent;
+
+    padding-right:
+        12px;
+
+}
+
+
+/* 
+   Indicator (Base Circle)
+    */
+
+.ist-stepper__indicator {
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    flex:
+        0 0 32px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    box-sizing:
+        border-box;
+
+    border:
+        2px solid var(--ist-stepper-upcoming);
+
+    border-radius:
+        50%;
+
+    background:
+        var(--ist-stepper-background);
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1;
+
+    transition:
+        all
+        var(--ist-transition-fast);
+
+}
+
+
+/* 
+   Labels & Text Styling
+    */
+
+.ist-stepper__labels {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+
+    width:
+        100%;
+
+}
+
+
+.ist-stepper--horizontal
+.ist-stepper__labels {
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+}
+
+
+.ist-stepper--vertical
+.ist-stepper__labels {
+
+    align-items:
+        flex-start;
+
+    text-align:
+        left;
+
+}
+
+
+.ist-stepper__step-label {
+
+    color:
+        var(--ist-stepper-upcoming);
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.05em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.ist-stepper__item
+.ist-stepper__label {
+
+    color:
+        var(--ist-stepper-upcoming);
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.3;
+
+}
+
+
+.ist-stepper__description {
+
+    font-size:
+        11px;
+
+    font-weight:
+        500;
+
+}
+
+
+/* 
+   States
+    */
+
+/*  Completed  */
+.ist-stepper__item--completed
+.ist-stepper__indicator {
+
+    border-color:
+        var(--ist-stepper-completed-surface);
+
+    background:
+        var(--ist-stepper-completed-surface);
+
+    color:
+        var(--ist-stepper-completed);
+
+}
+
+.ist-stepper__item--completed
+.ist-stepper__indicator svg,
+.ist-stepper__item--completed
+.ist-stepper__indicator path {
+
+    fill:
+        var(--ist-stepper-completed);
+
+    stroke:
+        var(--ist-stepper-completed);
+
+}
+
+.ist-stepper__item--completed
+.ist-stepper__step-label,
+.ist-stepper__item--completed
+.ist-stepper__label,
+.ist-stepper__item--completed
+.ist-stepper__description {
+
+    color:
+        var(--ist-stepper-completed-surface);
+
+}
+
+
+/*  Current  */
+.ist-stepper__item--current
+.ist-stepper__indicator {
+
+    border:
+        3px solid var(--ist-stepper-background);
+
+    background:
+        var(--ist-stepper-current-surface);
+
+    outline:
+        2.5px solid var(--ist-stepper-current);
+
+    outline-offset:
+        2px;
+
+}
+
+.ist-stepper__item--current
+.ist-stepper__indicator * {
+
+    display:
+        none;
+
+}
+
+.ist-stepper__item--current
+.ist-stepper__step-label,
+.ist-stepper__item--current
+.ist-stepper__description {
+
+    color:
+        var(--ist-stepper-current-surface);
+
+}
+
+.ist-stepper__item--current
+.ist-stepper__label {
+
+    font-weight:
+        700;
+
+    color:
+        var(--ist-stepper-current-surface);
+
+}
+
+
+/*  Pending  */
+.ist-stepper__item--pending
+.ist-stepper__indicator {
+
+    border-color:
+        var(--ist-stepper-line);
+
+    background:
+        var(--ist-stepper-upcoming-surface);
+
+}
+
+.ist-stepper__item--pending
+.ist-stepper__indicator *,
+.ist-stepper__item--pending
+.ist-stepper__indicator {
+
+    color:
+        var(--ist-stepper-upcoming);
+
+}
+
+.ist-stepper__item--pending
+.ist-stepper__step-label,
+.ist-stepper__item--pending
+.ist-stepper__description {
+
+    color:
+        var(--ist-stepper-upcoming-surface);
+
+}
+
+.ist-stepper__item--pending
+.ist-stepper__label {
+
+    color:
+        var(--ist-stepper-upcoming-surface);
+
+}
+
+
+/* 
+   Hover
+    */
+
+.ist-stepper__item {
+
+    transition:
+        transform
+        var(--ist-transition-fast),
+
+        opacity
+        var(--ist-transition-fast);
+
+}
+
+.ist-stepper__item:hover {
+
+    opacity:
+        0.85;
+
+}
+
+
+/* 
+   Connectors
+    */
+
+.ist-stepper--horizontal
+.ist-stepper__connector {
+
+    position:
+        absolute;
+
+    top:
+        16px;
+
+    left:
+        calc(50% + 24px);
+
+    width:
+        calc(100% - 48px);
+
+    height:
+        2px;
+
+    z-index:
+        1;
+
+    background:
+        var(--ist-stepper-line);
+
+    pointer-events:
+        none;
+
+}
+
+
+.ist-stepper--horizontal
+.ist-stepper__connector--completed {
+
+    background:
+        var(--ist-stepper-completed-surface);
+
+}
+
+
+.ist-stepper--vertical
+.ist-stepper__connector {
+
+    position:
+        absolute;
+
+    top:
+        38px;
+
+    left:
+        15px;
+
+    width:
+        2px;
+
+    height:
+        calc(100% - 46px);
+
+    z-index:
+        1;
+
+    background:
+        var(--ist-stepper-line);
+
+    pointer-events:
+        none;
+
+}
+
+
+.ist-stepper--vertical
+.ist-stepper__connector--completed {
+
+    background:
+        var(--ist-stepper-completed-surface);
+
+}
+
+
+.ist-stepper__item:last-child
+.ist-stepper__connector {
+
+    display:
+        none;
+
+}
+
+
+/* 
+   PROGRESS STEPPER
+    */
+
+.ist-progress-stepper {
+
+    --ist-progress-completed: var(--ist-color-progress-completed);
+    --ist-progress-completed-surface: var(--ist-color-progress-completed-surface);
+    --ist-progress-current: var(--ist-color-progress-current);
+    --ist-progress-current-surface: var(--ist-color-progress-current-surface);
+    --ist-progress-upcoming: var(--ist-color-progress-upcoming);
+    --ist-progress-connector: var(--ist-color-progress-connector);
+    --ist-progress-background: var(--ist-color-background);
+
+    display:
+        flex;
+
+    width:
+        100%;
+
+    gap:
+        16px;
+
+    box-sizing:
+        border-box;
+
+}
+
+
+.ist-progress-stepper__item {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    flex:
+        1;
+
+    min-width:
+        0;
+
+    gap:
+        10px;
+
+    cursor:
+        pointer;
+
+}
+
+
+.ist-progress-stepper__bar {
+
+    width:
+        100%;
+
+    height:
+        3px;
+
+    background:
+        var(--ist-progress-connector);
+
+    border-radius:
+        2px;
+
+    transition:
+        background
+        var(--ist-transition-fast),
+        height
+        var(--ist-transition-fast);
+
+}
+
+
+.ist-progress-stepper__content {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+}
+
+
+.ist-progress-stepper__indicator {
+
+    width:
+        20px;
+
+    height:
+        20px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    border-radius:
+        50%;
+
+    line-height:
+        1;
+
+    box-sizing:
+        border-box;
+
+    transition:
+        all
+        var(--ist-transition-fast);
+
+}
+
+
+.ist-progress-stepper__label {
+
+    font-size:
+        14px;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.2;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+}
+
+
+/*  States   */
+
+/* Completed */
+.ist-progress-stepper__item--completed
+.ist-progress-stepper__bar {
+
+    background:
+        var(--ist-progress-completed-surface);
+
+}
+
+.ist-progress-stepper__item--completed
+.ist-progress-stepper__indicator {
+
+    background:
+        var(--ist-progress-completed-surface);
+
+    color:
+        var(--ist-progress-completed);
+
+}
+
+.ist-progress-stepper__item--completed
+.ist-progress-stepper__label {
+
+    color:
+        var(--ist-progress-completed-surface);
+
+}
+
+
+/* Current*/
+.ist-progress-stepper__item--current
+.ist-progress-stepper__bar {
+
+    background:
+        var(--ist-progress-current);
+
+}
+
+.ist-progress-stepper__item--current
+.ist-progress-stepper__indicator {
+
+    background:
+        var(--ist-progress-current-surface);
+
+    border:
+        2px solid var(--ist-progress-background);
+
+    outline:
+        2px solid var(--ist-progress-current);
+
+    outline-offset:
+        2px;
+
+    color:
+        transparent;
+
+}
+
+.ist-progress-stepper__item--current
+.ist-progress-stepper__label {
+
+    color:
+        var(--ist-progress-current-surface);
+
+    font-weight:
+        700;
+
+}
+
+
+/* Pending */
+.ist-progress-stepper__item--pending
+.ist-progress-stepper__bar {
+
+    background:
+        var(--ist-progress-connector);
+
+}
+
+.ist-progress-stepper__item--pending
+.ist-progress-stepper__indicator {
+
+    background:
+        transparent;
+
+    color:
+        var(--ist-progress-upcoming);
+
+}
+
+.ist-progress-stepper__item--pending
+.ist-progress-stepper__label {
+
+    color:
+        var(--ist-progress-upcoming);
+
+}
+
+
+/* 
+   PROGRESS STEPPER
+    */
+
+.ist-progress-stepper__item {
+    transition:
+        opacity
+        var(--ist-transition-normal);
+}
+
+.ist-progress-stepper__item:hover {
+    opacity: 0.75; 
+}
+
+.ist-progress-stepper__item:hover .ist-progress-stepper__label {
+    filter: brightness(1.1);
+}
+/* 
+   BADGE
+    */
+
+.ist-badge {
+
+    --ist-badge-color:
+        var(--ist-color-badge-success-color);
+
+    --ist-badge-bg:
+        var(--ist-color-badge-success-bg);
+
+    --ist-badge-border:
+        var(--ist-color-badge-success-border);
+
+    --ist-badge-text:
+        var(--ist-color-badge-text);
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        8px;
+
+    padding:
+        6px 12px;
+
+    border-radius:
+        8px;
+
+    background:
+        var(--ist-badge-bg);
+
+    border:
+        1px
+        solid
+        var(--ist-badge-border);
+
+    color:
+        var(--ist-badge-text);
+
+    font-family:
+        var(--ist-font-primary);
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+
+    line-height:
+        1;
+
+    box-sizing:
+        border-box;
+
+    width:
+        fit-content;
+
+    cursor:
+        pointer;
+
+    transition:
+        background-color
+        var(--ist-transition-fast),
+
+        border-color
+        var(--ist-transition-fast),
+
+        box-shadow
+        var(--ist-transition-fast);
+
+}
+
+
+/* 
+   Badge Indicator
+    */
+
+.ist-badge__dot-wrapper {
+
+    position:
+        relative;
+
+    width:
+        12px;
+
+    height:
+        12px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-shrink:
+        0;
+
+}
+
+
+.ist-badge__dot {
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    background-color:
+        var(--ist-badge-color);
+
+    border-radius:
+        50%;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+.ist-badge__ring {
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    width:
+        12px;
+
+    height:
+        12px;
+
+    background-color:
+        var(--ist-badge-color);
+
+    border-radius:
+        50%;
+
+    opacity:
+        0.35;
+
+    z-index:
+        1;
+
+    /* Pulse */
+    animation:
+        ist-badge-blink 1.8s infinite ease-in-out;
+
+}
+
+
+/* Animation */
+@keyframes ist-badge-blink {
+
+    0%, 100% {
+
+        opacity:
+            0.2;
+
+        transform:
+            scale(0.85);
+
+    }
+
+    50% {
+
+        opacity:
+            0.65;
+
+        transform:
+            scale(1.25);
+
+    }
+
+}
+
+
+/* 
+   Badge Text
+    */
+
+.ist-badge__text {
+
+    display:
+        inline-block;
+
+    margin-top:
+        1px; 
+
+}
+
+
+/* 
+   Badge Status Modifiers
+    */
+
+.ist-badge--success {
+
+    --ist-badge-color: var(--ist-color-badge-success-color);
+    --ist-badge-bg: var(--ist-color-badge-success-bg);
+    --ist-badge-border: var(--ist-color-badge-success-border);
+
+}
+
+
+.ist-badge--warning {
+
+    --ist-badge-color: var(--ist-color-badge-warning-color);
+    --ist-badge-bg: var(--ist-color-badge-warning-bg);
+    --ist-badge-border: var(--ist-color-badge-warning-border);
+
+}
+
+
+.ist-badge--error {
+
+    --ist-badge-color: var(--ist-color-badge-error-color);
+    --ist-badge-bg: var(--ist-color-badge-error-bg);
+    --ist-badge-border: var(--ist-color-badge-error-border);
+
+}
+
+
+.ist-badge--info {
+
+    --ist-badge-color: var(--ist-color-badge-info-color);
+    --ist-badge-bg: var(--ist-color-badge-info-bg);
+    --ist-badge-border: var(--ist-color-badge-info-border);
+
+}
+
+
+/* 
+ Hover
+    */
+
+.ist-badge:hover {
+
+    background:
+        color-mix(
+            in srgb,
+            var(--ist-badge-color) 8%,
+            var(--ist-badge-bg)
+        );
+
+    box-shadow:
+        0 2px 6px
+        color-mix(
+            in srgb,
+            var(--ist-badge-color) 18%,
+            transparent
+        );
+
+}
+
+/* 
+   PROGRESS CARD
+    */
+
+.ist-progress-card {
+
+    --ist-progress-card-color:
+        var(--ist-color-progress-card-success-color);
+
+    --ist-progress-card-border:
+        var(--ist-color-progress-card-success-border);
+
+    --ist-progress-card-text:
+        var(--ist-color-progress-card-text);
+
+    --ist-progress-card-track:
+        var(--ist-color-progress-card-pending-track);
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        16px;
+
+    width:
+        100%;
+
+    max-width:
+        320px;
+
+    padding:
+        20px;
+
+    box-sizing:
+        border-box;
+
+    background:
+        var(--ist-color-background);
+
+    border:
+        1px solid var(--ist-progress-card-border);
+
+    border-radius:
+        16px;
+
+    box-shadow:
+        var(--ist-shadow-sm);
+
+    font-family:
+        var(--ist-font-primary);
+
+    transition:
+        border-color var(--ist-transition-fast),
+        background-color var(--ist-transition-fast);
+
+}
+
+
+/* 
+   Header
+    */
+
+.ist-progress-card__header {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        4px;
+
+}
+
+
+.ist-progress-card__percentage {
+
+    font-size:
+        28px;
+
+    font-weight:
+        800;
+
+    color:
+        var(--ist-progress-card-text);
+
+    line-height:
+        1;
+
+}
+
+
+.ist-progress-card__label {
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+
+    color:
+        var(--ist-color-text-muted);
+
+    letter-spacing:
+        0.01em;
+
+}
+
+
+/* 
+   Segments
+    */
+
+.ist-progress-card__segments {
+
+    display:
+        flex;
+
+    gap:
+        6px;
+
+    width:
+        100%;
+
+    box-sizing:
+        border-box;
+
+}
+
+
+.ist-progress-card__segment {
+
+    flex:
+        1;
+
+    height:
+        6px;
+
+    border-radius:
+        4px;
+
+    transition:
+        background-color var(--ist-transition-fast);
+
+}
+
+
+/* States */
+.ist-progress-card__segment--completed {
+
+    background-color:
+        var(--ist-progress-card-color);
+
+}
+
+
+.ist-progress-card__segment--pending {
+
+    background-color:
+        var(--ist-progress-card-track);
+
+}
+
+
+/* 
+   Status Modifiers
+    */
+
+.ist-progress-card--success {
+
+    --ist-progress-card-color: var(--ist-color-progress-card-success-color);
+    --ist-progress-card-border: var(--ist-color-progress-card-success-border);
+
+}
+
+
+.ist-progress-card--warning {
+
+    --ist-progress-card-color: var(--ist-color-progress-card-warning-color);
+    --ist-progress-card-border: var(--ist-color-progress-card-warning-border);
+
+}
+
+
+.ist-progress-card--error {
+
+    --ist-progress-card-color: var(--ist-color-progress-card-error-color);
+    --ist-progress-card-border: var(--ist-color-progress-card-error-border);
+
+}
+
+
+.ist-progress-card--info {
+
+    --ist-progress-card-color: var(--ist-color-progress-card-info-color);
+    --ist-progress-card-border: var(--ist-color-progress-card-info-border);
+
+}
+
+
+/* 
+Background
+    */
+
+.ist-progress-card {
+
+    --ist-progress-card-bg:
+        var(--ist-color-progress-card-bg, var(--ist-color-background));
+
+    background:
+        var(--ist-progress-card-bg);
+
+}
+
+/* 
+   PROGRESS CARD 
+    */
+
+
+.ist-progress-card__segment {
+
+    transform-origin:
+        left;
+
+}
+
+
+
+.ist-progress-card__segment--completed {
+
+    background-color:
+        var(--ist-progress-card-color);
+
+    opacity:
+        1;
+
+    transform:
+        scaleX(1);
+
+}
+
+
+
+.ist-progress-card__segment:not(.ist-progress-card__segment--completed) {
+
+    background-color:
+        var(--ist-progress-card-track);
+
+    opacity:
+        1;
+
+    transform:
+        scaleX(1);
+
+}
+
+
+
+.ist-progress-card:hover .ist-progress-card__segment--completed {
+
+    animation:
+        ist-chain-fill-color
+        1.5s
+        cubic-bezier(0.25, 1, 0.5, 1)
+        forwards;
+
+}
+
+
+.ist-progress-card:hover .ist-progress-card__segment:not(.ist-progress-card__segment--completed) {
+
+    animation:
+        ist-chain-fill-track
+        0.9s
+        cubic-bezier(0.25, 1, 0.5, 1)
+        forwards;
+
+}
+
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(1)  { animation-delay: 0ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(2)  { animation-delay: 90ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(3)  { animation-delay: 180ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(4)  { animation-delay: 270ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(5)  { animation-delay: 360ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(6)  { animation-delay: 450ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(7)  { animation-delay: 540ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(8)  { animation-delay: 630ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(9)  { animation-delay: 720ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(10) { animation-delay: 810ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(11) { animation-delay: 900ms; }
+.ist-progress-card:hover .ist-progress-card__segment:nth-child(12) { animation-delay: 990ms; }
+
+
+
+@keyframes ist-chain-fill-color {
+
+    0% {
+
+        opacity:
+            0.2;
+
+        transform:
+            scaleX(0.2);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            scaleX(1);
+
+    }
+
+}
+
+
+@keyframes ist-chain-fill-track {
+
+    0% {
+
+        opacity:
+            0.2;
+
+        transform:
+            scaleX(0.2);
+
+    }
+
+    100% {
+
+        opacity:
+            0.5;
+
+        transform:
+            scaleX(1);
+
+    }
+
+}
+/* 
+   RADIAL PROGRESS CARD 
+    */
+
+.ist-radial-card {
+
+    --ist-radial-card-color:
+        var(--ist-color-progress-card-success-color);
+
+    --ist-radial-card-text:
+        var(--ist-color-progress-card-text);
+
+    --ist-radial-card-track:
+        var(--ist-color-progress-card-pending-track);
+
+    --ist-radial-card-bg:
+        var(--ist-color-progress-card-bg, var(--ist-color-background));
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        100%;
+
+    max-width:
+        280px;
+
+    padding:
+        24px;
+
+    box-sizing:
+        border-box;
+
+    background:
+        var(--ist-radial-card-bg);
+
+    border:
+        none; /* Sin bordes */
+
+    border-radius:
+        16px;
+
+    box-shadow:
+        var(--ist-shadow-sm);
+
+    font-family:
+        var(--ist-font-primary);
+
+    cursor:
+        pointer;
+
+    transition:
+        background-color var(--ist-transition-fast),
+        box-shadow var(--ist-transition-fast);
+
+}
+
+
+/* 
+   Hover 
+    */
+
+.ist-radial-card:hover {
+
+    border:
+        none;
+
+    box-shadow:
+        0 8px 20px -4px
+        color-mix(
+            in srgb,
+            var(--ist-radial-card-color) 15%,
+            transparent
+        );
+
+}
+
+
+/* 
+   Chart Wrapper & SVG
+    */
+
+.ist-radial-card__chart-wrapper {
+
+    position:
+        relative;
+
+    width:
+        150px;
+
+    height:
+        150px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+}
+
+
+.ist-radial-card__svg {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+}
+
+
+
+.ist-radial-card__segment {
+
+    stroke-width:
+        3.5;
+
+    stroke-linecap:
+        round;
+
+    transform-origin:
+        center;
+
+}
+
+
+
+.ist-radial-card__segment--completed {
+
+    stroke:
+        var(--ist-radial-card-color);
+
+    opacity:
+        1;
+
+}
+
+
+.ist-radial-card__segment--pending {
+
+    stroke:
+        var(--ist-radial-card-track);
+
+    opacity:
+        0.6;
+
+}
+
+
+
+.ist-radial-card__content {
+
+    position:
+        absolute;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    gap:
+        2px;
+
+    pointer-events:
+        none;
+
+}
+
+
+.ist-radial-card__percentage {
+
+    font-size:
+        28px;
+
+    font-weight:
+        800;
+
+    color:
+        var(--ist-radial-card-text);
+
+    line-height:
+        1;
+
+}
+
+
+.ist-radial-card__label {
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+
+    color:
+        var(--ist-color-text-muted);
+
+    letter-spacing:
+        0.02em;
+
+}
+
+
+/* 
+   Status Modifiers
+    */
+
+.ist-radial-card--success {
+
+    --ist-radial-card-color: var(--ist-color-progress-card-success-color);
+
+}
+
+
+.ist-radial-card--warning {
+
+    --ist-radial-card-color: var(--ist-color-progress-card-warning-color);
+
+}
+
+
+.ist-radial-card--error {
+
+    --ist-radial-card-color: var(--ist-color-progress-card-error-color);
+
+}
+
+
+.ist-radial-card--info {
+
+    --ist-radial-card-color: var(--ist-color-progress-card-info-color);
+
+}
+
+
+.ist-radial-card:hover .ist-radial-card__segment {
+
+    animation:
+        ist-radial-chain-wave
+        0.9s
+        cubic-bezier(0.25, 1, 0.5, 1)
+        forwards;
+
+    animation-delay:
+        calc(var(--index) * 22ms);
+
+}
+
+
+@keyframes ist-radial-chain-wave {
+
+    0% {
+
+        opacity:
+            0.15;
+
+        transform:
+            scale(0.8);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+/* Sizes
+(sm, md, lg, fluid)
+*/
+
+/*  Notification Sizes  */
+.ist-notification--sm { max-width: 300px; padding: 12px; }
+.ist-notification--md { max-width: 420px; }
+.ist-notification--lg { max-width: 600px; padding: 20px; }
+.ist-notification--fluid { max-width: 100%; }
+
+/*  Progress Card Sizes  */
+.ist-progress-card--sm { max-width: 240px; padding: 14px; }
+.ist-progress-card--md { max-width: 320px; }
+.ist-progress-card--lg { max-width: 440px; padding: 24px; }
+.ist-progress-card--fluid { max-width: 100%; }
+
+/*  Radial Progress Card Sizes  */
+.ist-radial-card--sm { max-width: 200px; padding: 16px; }
+.ist-radial-card--sm .ist-radial-card__chart-wrapper { width: 110px; height: 110px; }
+.ist-radial-card--md { max-width: 280px; }
+.ist-radial-card--lg { max-width: 360px; padding: 32px; }
+.ist-radial-card--lg .ist-radial-card__chart-wrapper { width: 180px; height: 180px; }
+.ist-radial-card--fluid { max-width: 100%; }
+
+/*  Badge Sizes  */
+.ist-badge--sm { padding: 4px 8px; font-size: 11px; }
+.ist-badge--md { padding: 6px 12px; font-size: 12px; }
+.ist-badge--lg { padding: 8px 16px; font-size: 14px; }
+.ist-badge--fluid { width: 100%; justify-content: center; }
+
+/*  Stepper & Progress Stepper Sizes  */
+.ist-stepper--sm, .ist-progress-stepper--sm { font-size: 90%; }
+.ist-stepper--md, .ist-progress-stepper--md { font-size: 100%; }
+.ist-stepper--lg, .ist-progress-stepper--lg { font-size: 110%; }
+.ist-stepper--fluid, .ist-progress-stepper--fluid { width: 100%; }

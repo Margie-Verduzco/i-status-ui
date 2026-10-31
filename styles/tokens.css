@@ -1,0 +1,89 @@
+
+/* 
+   I-STATUS
+   Global Design Tokens
+    */
+
+:root {
+
+    /* 
+       Typography
+        */
+
+    --ist-font-primary:
+        "Manrope",
+        sans-serif;
+
+    --ist-font-readable:
+        "Atkinson Hyperlegible",
+        sans-serif;
+
+
+    --ist-font-size-xs: 10px;
+
+    --ist-font-size-sm: 12px;
+
+    --ist-font-size-md: 13px;
+
+    --ist-font-size-lg: 14px;
+
+    --ist-font-size-xl: 18px;
+
+
+    --ist-font-weight-regular: 400;
+
+    --ist-font-weight-medium: 500;
+
+    --ist-font-weight-semibold: 600;
+
+    --ist-font-weight-bold: 700;
+
+
+    /* 
+       Spacing
+        */
+
+    --ist-space-1: 4px;
+
+    --ist-space-2: 8px;
+
+    --ist-space-3: 12px;
+
+    --ist-space-4: 16px;
+
+    --ist-space-5: 20px;
+
+    --ist-space-6: 24px;
+
+    --ist-space-8: 32px;
+
+
+    /* 
+       Radius
+        */
+
+    --ist-radius-sm: 8px;
+
+    --ist-radius-md: 12px;
+
+    --ist-radius-lg: 16px;
+
+
+    /* 
+       Borders
+        */
+
+    --ist-border-width: 1px;
+
+
+    /* 
+       Motion
+        */
+
+    --ist-transition-fast:
+        150ms ease;
+
+    --ist-transition-normal:
+        220ms ease;
+
+}

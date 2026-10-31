@@ -1,0 +1,47 @@
+{
+  "name": "i-status-ui",
+  "version": "0.1.2",
+  "description": "Reusable UI JavaScript components for status, progress, tracking, and notifications, designed to make process states easy to understand at a glance and simplify development",
+  "type": "module",
+  "main": "./dist/i-status.esm.js",
+  "module": "./dist/i-status.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/i-status.esm.js",
+      "default": "./dist/i-status.esm.js"
+    },
+    "./styles.css": "./styles/i-Status.css",
+    "./tokens.css": "./styles/tokens.css",
+    "./browser": "./dist/i-status.min.js"
+  },
+  "unpkg": "./dist/i-status.min.js",
+  "jsdelivr": "./dist/i-status.min.js",
+  "files": [
+    "dist/",
+    "styles/",
+    "themes/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "esbuild src/index.js --bundle --format=esm --outfile=dist/i-status.esm.js && esbuild src/index.js --bundle --format=iife --global-name=iStatus --minify --outfile=dist/i-status.min.js",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "javascript",
+    "ui",
+    "components",
+    "status",
+    "progress",
+    "notifications",
+    "design-system"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "author": "Margie Verduzco",
+  "dependencies": {
+    "i-status-ui": "^0.1.1"
+  }
+}
