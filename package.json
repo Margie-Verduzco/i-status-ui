@@ -2,6 +2,14 @@
   "name": "i-status-ui",
   "version": "0.1.2",
   "description": "Reusable UI JavaScript components for status, progress, tracking, and notifications, designed to make process states easy to understand at a glance and simplify development",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Margie-Verduzco/i-status-ui.git"
+  },
+  "homepage": "https://github.com/Margie-Verduzco/i-status-ui#readme",
+  "bugs": {
+    "url": "https://github.com/Margie-Verduzco/i-status-ui/issues"
+  },
   "type": "module",
   "main": "./dist/i-status.esm.js",
   "module": "./dist/i-status.esm.js",
@@ -40,8 +48,5 @@
   "devDependencies": {
     "esbuild": "^0.28.2"
   },
-  "author": "Margie Verduzco",
-  "dependencies": {
-    "i-status-ui": "^0.1.1"
-  }
+  "author": "Margie Verduzco"
 }
