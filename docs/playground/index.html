@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>i-Status UI — Design System Playground</title>
 
-    <!-- Official styles from CDN (v0.1.2) -->
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/i-status-ui@0.1.2/styles/i-Status.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/i-status-ui@0.1.2/styles/tokens.css">
 
@@ -42,7 +42,6 @@
             flex-direction: column;
         }
 
-        /* --- Sticky Top Navbar --- */
         .sticky-nav {
             position: sticky;
             top: 0;
@@ -76,8 +75,6 @@
             color: #0f172a;
             letter-spacing: -0.03em;
         }
-
-        /* --- Botones Negros con Opacidad en Hover --- */
         .hero-actions {
             display: flex;
             align-items: center;
@@ -106,7 +103,7 @@
             opacity: 0.75;
         }
 
-        /* --- Hero con Fondo Blanco y Movimiento Sutil Dinámico --- */
+    
         .hero {
             position: relative;
             isolation: isolate;
@@ -211,7 +208,6 @@
 
         @keyframes cursorBlink { to { visibility: hidden; } }
 
-        /* --- Círculos de Estado --- */
         .traffic-dots {
             display: inline-flex;
             align-items: center;
@@ -257,7 +253,7 @@
             margin-right: 4px;
         }
 
-        /* --- Stacked Workspace --- */
+    
         .workspace {
             display: flex;
             flex-direction: column;
@@ -294,7 +290,6 @@
             letter-spacing: 0.04em;
         }
 
-        /* --- Controls Grid Layout --- */
         .controls-grid {
             padding: 24px;
             display: grid;
@@ -346,7 +341,6 @@
             box-shadow: 0 0 0 3px var(--primary-light);
         }
 
-        /* Pill Buttons / Segmented Controls */
         .pill-group {
             display: flex;
             flex-wrap: wrap;
@@ -373,7 +367,7 @@
             font-weight: 600;
         }
 
-        /* Dynamic sub-sections */
+    
         .dynamic-options {
             grid-column: 1 / -1;
             display: grid;
@@ -386,7 +380,6 @@
 
         .span-full { grid-column: 1 / -1; }
 
-        /* --- Live Preview Box --- */
         .preview-box {
             padding: 48px 32px;
             min-height: 220px;
@@ -405,7 +398,7 @@
             align-items: center;
         }
 
-        /* --- Code Tabs Header --- */
+       
         .code-tabs-header {
             display: flex;
             align-items: center;
@@ -483,7 +476,6 @@
 
 <body>
 
-    <!-- Sticky Navigation Bar -->
     <nav class="sticky-nav">
         <div class="nav-inner">
             <div class="nav-brand-group">
@@ -496,7 +488,6 @@
         </div>
     </nav>
 
-    <!-- Hero Header con Fondo Blanco y Movimiento Sutil Dinámico -->
     <header class="hero">
         <div class="hero-inner">
             <div class="hero-copy">
@@ -514,16 +505,16 @@
         </div>
     </header>
 
-    <!-- Stacked Workspace -->
+   
     <div class="workspace">
 
-        <!-- 1. TOP BLOCK: Configuration Options -->
+        
         <section class="card">
             <div class="card-header">
                 <h3>Component Configuration</h3>
             </div>
             <div class="controls-grid">
-                <!-- Component Selection -->
+    
                 <div class="control-group">
                     <label for="componentSelect">Component</label>
                     <select id="componentSelect">
@@ -536,7 +527,7 @@
                     </select>
                 </div>
 
-                <!-- Size -->
+                
                 <div class="control-group">
                     <label>Size</label>
                     <div class="pill-group" id="sizePills">
@@ -547,13 +538,13 @@
                     </div>
                 </div>
 
-                <!-- Visual Theme -->
+                
                 <div class="control-group">
                     <label for="themeSelect">Visual Theme</label>
                     <select id="themeSelect"></select>
                 </div>
 
-                <!-- Specific Controls: Notification -->
+                
                 <div id="notificationControls" class="dynamic-options">
                     <div class="control-group">
                         <label>Status</label>
@@ -574,7 +565,7 @@
                     </div>
                 </div>
 
-                <!-- Controls: Stepper -->
+                
                 <div id="stepperControls" class="dynamic-options" hidden>
                     <div class="control-group">
                         <label for="stepperOrientation">Orientation</label>
@@ -593,7 +584,7 @@
                     </div>
                 </div>
 
-                <!-- Controls: Progress Stepper -->
+                
                 <div id="progressStepperControls" class="dynamic-options" hidden>
                     <div class="control-group">
                         <label for="progressStepperCurrent">Current Step</label>
@@ -605,7 +596,7 @@
                     </div>
                 </div>
 
-                <!-- Controls: Badge -->
+                
                 <div id="badgeControls" class="dynamic-options" hidden>
                     <div class="control-group">
                         <label>Status</label>
@@ -622,7 +613,7 @@
                     </div>
                 </div>
 
-                <!-- Controls: Progress Card -->
+                
                 <div id="progressCardControls" class="dynamic-options" hidden>
                     <div class="control-group">
                         <label>Status</label>
@@ -647,7 +638,7 @@
                     </div>
                 </div>
 
-                <!-- Controls: Radial Card -->
+                
                 <div id="radialCardControls" class="dynamic-options" hidden>
                     <div class="control-group">
                         <label>Status</label>
@@ -674,7 +665,7 @@
             </div>
         </section>
 
-        <!-- 2. MIDDLE BLOCK: Wide Live Preview -->
+        
         <section class="card">
             <div class="card-header">
                 <h3>Live Preview</h3>
@@ -686,7 +677,7 @@
             <div id="previewError" class="playground-error" hidden></div>
         </section>
 
-        <!-- 3. BOTTOM BLOCK: Generated Code with Tabs -->
+        
         <section class="card">
             <div class="code-tabs-header">
                 <div class="code-tabs">
@@ -702,7 +693,7 @@
 
     </div>
 
-    <!-- Templates para fragmentos de código -->
+    
     <template id="tpl-esm">// 1. Install via npm:
 // npm i i-status-ui
 
@@ -729,11 +720,11 @@ document.getElementById("app").appendChild(element);</template>
     document.getElementById("app").appendChild(element);
 &lt;/script&gt;</template>
 
-    <!-- Load official library bundle from CDN -->
+    
     <script src="https://cdn.jsdelivr.net/npm/i-status-ui@0.1.2/dist/i-status.min.js"></script>
 
     <script>
-        // Typing Effect Script con Loop Infinito (Escribe, muestra círculos, borra y repite)
+        
         (() => {
             const text = "i-Status";
             const target = document.getElementById("typedBrand");
@@ -750,7 +741,7 @@ document.getElementById("app").appendChild(element);</template>
                         idx++;
                         setTimeout(typeChar, 90);
                     } else {
-                        // Mostrar los círculos de estado
+                        
                         ["green", "yellow", "red"].forEach((color, i) => {
                             const span = document.createElement("span");
                             span.className = `traffic-dot ${color}`;
@@ -758,7 +749,7 @@ document.getElementById("app").appendChild(element);</template>
                             dots.appendChild(span);
                         });
 
-                        // Pausa de 3 segundos antes de borrar y reiniciar el loop
+                        
                         setTimeout(eraseText, 3000);
                     }
                 }
@@ -767,7 +758,7 @@ document.getElementById("app").appendChild(element);</template>
 
             function eraseText() {
                 let currentText = target.textContent;
-                // Ocultar círculos al empezar a borrar
+                
                 dots.innerHTML = "";
 
                 function deleteChar() {
@@ -776,7 +767,7 @@ document.getElementById("app").appendChild(element);</template>
                         target.textContent = currentText;
                         setTimeout(deleteChar, 50);
                     } else {
-                        // Pausa corta antes de volver a escribir
+                        
                         setTimeout(runTypingLoop, 600);
                     }
                 }
@@ -786,7 +777,7 @@ document.getElementById("app").appendChild(element);</template>
             setTimeout(runTypingLoop, 300);
         })();
 
-        // State & Playground Logic
+        
         const state = {
             component: "notification",
             size: "md",
